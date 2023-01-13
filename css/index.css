@@ -1,0 +1,90 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  
+  
+  body {
+    font-family: 'Nunito', sans-serif;
+    color:darkcyan;
+  }
+  
+  #table-border-radius, th, td {
+    
+    border: 7px solid rgb(44, 170, 160) ;
+    border-style: ridge;
+    border-radius:10px;
+    padding:6px;
+    
+    
+  }
+  table {
+    max-width: 960px;
+    margin: 10px auto;
+  }
+  
+  caption {
+    font-size: 1.6em;
+    font-weight: 400;
+    padding: 10px 0;
+    color: cadetblue;
+  }
+  
+  thead th {
+    
+    font-weight: 900;
+    background: #2c8a8d;
+    color: #FFF;
+  }
+ 
+  
+  tr {
+   
+    background: #f4f7f8;
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 5px;
+  }
+  
+  tr:nth-child(even) {
+    background: #e8eeef;
+  }
+  
+  
+   th, td {
+    text-align: left;
+    padding: 25px;
+    font-weight: 300;
+  } 
+  
+  .allTelevizoare{
+    border: 10px solid rgb(44, 170, 160) ;
+    border-style:ridge;
+  }
+
+
+  tr th{
+    font-weight:bold;
+      }
+  
+  th{
+      border: 5px solid #C1DAD7;
+  }
+  td {
+    border: 5px solid #C1DAD7;
+  }
+  .c1{
+    background:#4b8c74;
+  }
+  .c2{
+    background:#74c476;
+  }
+  .c3{
+    background:#a4e56d;
+  }
+  .c4{
+    background:#cffc83;
+  }
+  
+  
