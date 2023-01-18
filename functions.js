@@ -18,4 +18,33 @@ function attachRows(arr){
     }
 }
 
+function returnMarcile(arr){
+    let arrNou;
+    for(let i=0;i<arr.length;i++){
+        arrNou.appendChild(arr[i].marca);
+    }
+    return arrNou;
+}
+
+function returnTelevizor(data,marca){
+    for(let i=0;i<data.length;i++){
+        if(data[i].marca==marca){
+            return  data[i].marca;
+        }
+    }
+    return -1;
+}
+/*
+
+
+
+
+
+
+
+ 
+
+
+*/
+
 
