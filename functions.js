@@ -13,6 +13,7 @@ function createRow(televizor){
 
 function attachRows(arr){
     let container=document.querySelector(".container");
+    container.innerHTML="";//face gol containerul
     for(let i=0;i<arr.length;i++){
         container.appendChild(createRow(arr[i]));
     }
@@ -34,17 +35,16 @@ function returnTelevizor(data,marca){
     }
     return -1;
 }
-/*
 
+function createOptions(marci){
+    let marcile=document.querySelector(".marci");
+        for(let i=0;i<marci.length;i++){
+            let option=document.createElement('option');
+            option.value=marci[i];
+            option.textContent=marci[i];
+            marcile.appendChild(option);
+        }
+}
 
-
-
-
-
-
- 
-
-
-*/
 
 

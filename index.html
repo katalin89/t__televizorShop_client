@@ -8,9 +8,23 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
+    <select name="" id="" class="marci"></select>
     <table class="allTelevizoare">
+
         <caption>Televizoare information</caption>
+       
+        <div class="newTelevizor">
+            <h1 class="newTelevizor">New Televizor</h1>
+            <div>
+                <label for="marca">Marca</label>
+                <input type="text" id="marca">
+                <label for="model">Model</label>
+                <input type="text" name="" id="model">
+                <label for="pret">pret</label>
+                <input type="text"id="pret">
+               <button class="add" >Add Televizor</button>            </div>
+        </div>
+
         <thead>
             <tr>
                 <th scope="col" class="c1">Id</th>
@@ -25,7 +39,9 @@
 
     </table>
 
-    <script src="app.js"></script>
+    <script src="api.js"></script>
     <script src="functions.js"></script>
+    <script src="app.js"></script>
+   
 </body>
 </html>
