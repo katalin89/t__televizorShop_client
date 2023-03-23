@@ -1,7 +1,7 @@
 
 //functie care adauga un televizor
 function api(path,method,body=null){
-    const url="http://localhost:8080/api/v1/"+path;
+    const url="http://localhost:8080/api/v1/televizor"+path;
 
     const options={
         method,
@@ -23,7 +23,7 @@ function api(path,method,body=null){
 
 async function getAllTv(){
 
-    let data=await api("televizoare",'GET');
+    let data=await api("/all",'GET');
 
     data=await data.json();
 

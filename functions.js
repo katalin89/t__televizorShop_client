@@ -1,5 +1,5 @@
 async function attachHomePage(){
-    let container=document.querySelector("container");
+    let container=document.querySelector(".container");
 
     container.innerHTML=`
     <h1>Televizoare</h1>
@@ -44,7 +44,7 @@ async function attachHomePage(){
         }
     })
 
-    let data=await getAllTelevizoare();
+    let data=await getAllTv();
     attachRows(data);
 
     let btnNewTv=document.querySelector(".new-televizor");
