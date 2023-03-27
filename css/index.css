@@ -1,90 +1,117 @@
-*, *:before, *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+body {
+  padding: 10px 50px 50px;
+  font: 18px "Garamond", serif;
+}
+
+a {
+  color: #019875;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+  a:hover {
+    color: black;
   }
 
-  
-  
-  body {
-    font-family: 'Nunito', sans-serif;
-    color:darkcyan;
-  }
-  
-  #table-border-radius, th, td {
-    
-    border: 7px solid rgb(44, 170, 160) ;
-    border-style: ridge;
-    border-radius:10px;
-    padding:6px;
-    
-    
-  }
-  table {
-    max-width: 960px;
-    margin: 10px auto;
-  }
-  
-  caption {
-    font-size: 1.6em;
-    font-weight: 400;
-    padding: 10px 0;
-    color: cadetblue;
-  }
-  
-  thead th {
-    
-    font-weight: 900;
-    background: #2c8a8d;
-    color: #FFF;
-  }
- 
-  
-  tr {
-   
-    background: #f4f7f8;
-    border-bottom: 1px solid #FFF;
-    margin-bottom: 5px;
-  }
-  
-  tr:nth-child(even) {
-    background: #e8eeef;
-  }
-  
-  
-   th, td {
-    text-align: left;
-    padding: 25px;
-    font-weight: 300;
-  } 
-  
-  .allTelevizoare{
-    border: 10px solid rgb(44, 170, 160) ;
-    border-style:ridge;
+a.button, input[type=submit] {
+  color: white;
+  background: #019875;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 10px 14px 12px;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+form a.button, input[type=submit] {
+  margin-left: 140px;
+  transition: 0.4s;
+}
+
+input[type=submit] {
+  border: 0;
+}
+
+  a.button:hover, input[type=submit]:hover {
+    background-color: #01b189;
   }
 
+p {
+  margin: 20px auto;
+}
 
-  tr th{
-    font-weight:bold;
-      }
-  
-  th{
-      border: 5px solid #C1DAD7;
-  }
-  td {
-    border: 5px solid #C1DAD7;
-  }
-  .c1{
-    background:#4b8c74;
-  }
-  .c2{
-    background:#74c476;
-  }
-  .c3{
-    background:#a4e56d;
-  }
-  .c4{
-    background:#cffc83;
-  }
-  
-  
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin-bottom: 10px;
+  line-height: 1.3em;
+}
+
+h2 {
+  border-top: 2px solid #e7e7e7;
+  padding-top: 20px;
+}
+
+th {
+  border-bottom: 2px solid #D8B493;
+  text-align: left;
+  padding: 5px 20px 5px 10px;
+}
+
+
+
+tr {
+  min-height: 50px;
+}
+
+tr:nth-child(2n) {
+  background: #E7E7E7;
+}
+
+td {
+  padding: 5px 20px 5px 10px;
+}
+
+label {
+  font-weight: bold;
+  min-width: 130px;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+input {
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #E7E7E7;
+  transition: 0.4s;
+}
+
+input[type=text] {
+  margin-left: 7px;
+  width: 300px;
+}
+
+.error {
+  color: rgb(236, 15, 15);
+}
+
+.butoane{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  margin-left: 140px;
+}
+
+button{
+  border: 5px soloid #019875;
+  background-color: #019875;
+  color: white;
+  width:100px;
+  height: 40px
+
+
+}

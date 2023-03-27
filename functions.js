@@ -17,7 +17,7 @@ async function attachHomePage(){
             
         </tr>
 
-        <tbody class="container-televizoare>
+        <tbody class="container-tv">
 
         </body>
 
@@ -25,23 +25,30 @@ async function attachHomePage(){
     `
 
     container.addEventListener("click",async(e)=>{
-        let data=e.target;
 
-        if(data.classList.contains("pret")){
-            let vec=await sortByPrice();
-            attachRows(vec);
-        }else if(data.classList.contains("marca")){
+        e.preventDefault;
+        let data=e.target;
+    
+        if(data.classList.contains("marca")){
             let vec=await sortByMarca();
             attachRows(vec);
-        }else if(data.classList.contains("model")){   const tv={
-            tvId:tvProperties[0].innerHTML,
-            marca:tvProperties[1].innerHTML,
-            model:tvProperties[2].innerHTML,
-            pret:tvProperties[3].innerHTML
-        }
+    
+           
+    
+            attachRows(vec);
+        } else if(data.classList.contains("model")){
             let vec=await sortByModel();
             attachRows(vec);
+            
+
+        }else if(data.classList.contains("pret")){
+            let vec=await sortByPret();
+            //console.log("vectorul: "+vec);
+           
+            attachRows(vec);
         }
+            
+    
     })
 
     let data=await getAllTv();
@@ -50,28 +57,47 @@ async function attachHomePage(){
     let btnNewTv=document.querySelector(".new-televizor");
 
     btnNewTv.addEventListener("click",(e)=>{
-        attaNewTvpage();
+        attachNewTvPage();
     });
 
-    let rowsContainer=document.querySelector(".container-televizoare");
+    //cand apasam un televizor apare pagina de update
+    let rowsConatainer=document.querySelector(".container-tv");
 
-    rowsContainer.addEventListener("click",(e)=>{
-        let data=e.target.parentNode;
+    rowsConatainer.addEventListener("click",(e)=>{
+       
+        let data=e.target;
 
         console.log(data);
+        //console.log("data"+data.id);
+    if (data.classList.contains("id")){
 
-        let tvProperties=data.children;
+
+
         
-        const tv={
-            tvId:tvProperties[0].innerHTML,
-            marca:tvProperties[1].innerHTML,
-            model:tvProperties[2].innerHTML,
-            pret:tvProperties[3].innerHTML
-        }
+            let tvProperties=data.children;
 
-        attachUpdatePage(tv);
-    });
+          
+            
+            const tv={
+                tvId:tvProperties[0].innerHTML,
+                marca:tvProperties[1].innerHTML,
+                model:tvProperties[2].innerHTML,
+                pret:tvProperties[3].innerHTML
+    
+            }
+            console.log(tv);            
+            attachUpdatePage(tv);
+        }
+       
+        
+       
+    })
+
+   
+
+ 
 }
+//cere valorile noi si face update,sare la pagina principala cu valoarea noua
 
 function update(){
     let inp1=document.getElementById('marca');
@@ -79,16 +105,16 @@ function update(){
     let inp3=document.getElementById('pret');
 
     const tv={
-        marca:tvProperties[1].innerHTML,
-        model:tvProperties[2].innerHTML,
-        pret:tvProperties[3].innerHTML
+        marca:inp1.value,
+        model:inp2.value,
+        pret:inp3.value
     }
     updateTv(tv);
     
 }
 
 async function attachUpdatePage(tv){
-    let container=document.querySelector("container")
+    let container=document.querySelector(".container")
 
     container.innerHTML=`
     <h1>Update Tv</h1>
@@ -99,7 +125,7 @@ async function attachUpdatePage(tv){
     </ul>
 
     <p>
-    <label for="marca">marca</label>
+    <label for="marca">Marca</label>
     <input name="marca" type="text" class="marca" id="marca" value="${tv.marca}"  disabled>
 </p>
 <p>
@@ -109,7 +135,7 @@ async function attachUpdatePage(tv){
 
 <p>
     <label for="pret">Pret</label>
-    <input name="pret" type="text" class="pret" id="pret" value="${car.pret}">
+    <input name="pret" type="text" class="pret" id="pret" value="${+tv.pret}">
 </p>
 <div>
     <button class="update">Update tv</button>
@@ -217,8 +243,8 @@ function attachNewTvPage(){
         <input name="title" type="text" id="marca" class="marca">
     </p>
     <p>
-        <label for="author">Model</label>
-        <input name="author" type="text" id="model" class="model">
+        <label for="model">Model</label>
+        <input name="model" type="text" id="model" class="model">
     </p>
 
 
@@ -229,7 +255,7 @@ function attachNewTvPage(){
     </p>
 
     <div class="butoane">
-        <button class="add">Add new  Car</button>
+        <button class="add">Add new  Tv</button>
         <button class="cancel">Cancel</button>
     </div
 
@@ -241,7 +267,7 @@ function attachNewTvPage(){
     })
 
     let btnAddNewTv=document.querySelector(".add");
-    let inp0=document.getElementById('carId');
+    let inp0=document.getElementById('tvId');
     let inp1=document.getElementById('marca');
     let inp2=document.getElementById('model');
     let inp3=document.getElementById('pret');
@@ -266,7 +292,7 @@ function attachNewTvPage(){
 
         if(inp1.value==""){
             erors.push("Trebuie pusa marca");
-            inp1.style.borderColor="red"
+            inp1.style.borderColor="red";
         }
 
         if(inp2.value==""){
@@ -276,7 +302,7 @@ function attachNewTvPage(){
 
         }
 
-        if(inp3.value==""){
+        if(inp3.value==0){
             erors.push("Trebuie pusa pretul");
 
             inp3.style.borderColor="red";
@@ -316,7 +342,7 @@ function createRow(televizor){
     let tr=document.createElement("tr");
 
     tr.innerHTML=`
-    <td>${televizor.id}</td>
+    <td class="id">${televizor.id}</td>
     <td>${televizor.marca}</td>
     <td>${televizor.model}</td>
     <td>${televizor.pret}</td>
@@ -326,12 +352,17 @@ function createRow(televizor){
 }
 
 function attachRows(arr){
-    let container=document.querySelector(".container");
-    container.innerHTML="";//face gol containerul
+    let container=document.querySelector(".container-tv");
+    
+
+    container.innerHTML = "";
     for(let i=0;i<arr.length;i++){
         container.appendChild(createRow(arr[i]));
     }
 }
+
+
+
 
 
 
