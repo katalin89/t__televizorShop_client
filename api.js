@@ -1,7 +1,7 @@
 
 //functie care adauga un televizor
 function api(path,method,body=null){
-    const url="http://localhost:8080/api/v1/televizor/"+path;
+    const url="http://localhost:8080/api/v1/tv/"+path;
 
     const options={
         method,
@@ -32,14 +32,14 @@ async function getAllTv(){
 
 async function addTv(tv){
 
-    let data=await api("add",'POST',tv);
+    let data=await api(`add`,'POST',tv);
 
     return data.json();
 }
 
 async function getAllMarci(){
 
-    let data=await api("televizoare/marci",'GET');
+    let data=await api(`televizoare/marci`,'GET');
 
     data=await data.json();
 
@@ -60,7 +60,7 @@ async function deleteTv(tvId){
 
 }
 async function deleteTvByModel(model){
-    let data=await api(`deleteTelevizorByModel/${model}`,'DELETE');
+    let data=await api(`deleteTvByModel/${model}`,'DELETE');
 
 }
 
@@ -68,6 +68,8 @@ async function deleteTvByModel(model){
 async function updateTv(tv){
 
 let data=await api(`update`,'PUT',tv);
+
+return data;
 }
 
 async function sortByPret(){
@@ -82,7 +84,7 @@ async function sortByMarca(){
 
     let data=await api(`sortByMarca`,'GET');
 
-    data=await data.json();
+    data=await data.json(data);
 
     return data;
 }
@@ -91,8 +93,18 @@ async function sortByModel(){
 
     let data=await api(`sortByModel`,'GET');
 
+    data=await data.json(data);
+
+    return data;
+}
+
+async function sortByPret(){
+
+    let data=await api(`sortByPret`,'GET');
+
     data=await data.json();
 
     return data;
+
 }
 

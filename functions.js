@@ -8,7 +8,7 @@ async function attachHomePage(){
 
     <table>
         <thead>
-        <tr>
+        <tr class="container-sort">
             
             <th  class="id">Id</th>
             <th class="marca">Marca</th>
@@ -23,8 +23,12 @@ async function attachHomePage(){
 
     </table>
     `
+    let data=await getAllTv();
+    attachRows(data);
 
-    container.addEventListener("click",async(e)=>{
+    let containerSort=document.querySelector(".container-sort");
+
+    containerSort.addEventListener("click",async(e)=>{
 
         e.preventDefault;
         let data=e.target;
@@ -33,17 +37,14 @@ async function attachHomePage(){
             let vec=await sortByMarca();
             attachRows(vec);
     
-           
-    
-            attachRows(vec);
         } else if(data.classList.contains("model")){
             let vec=await sortByModel();
             attachRows(vec);
             
 
         }else if(data.classList.contains("pret")){
+
             let vec=await sortByPret();
-            //console.log("vectorul: "+vec);
            
             attachRows(vec);
         }
@@ -51,8 +52,7 @@ async function attachHomePage(){
     
     })
 
-    let data=await getAllTv();
-    attachRows(data);
+   
 
     let btnNewTv=document.querySelector(".new-televizor");
 
@@ -65,18 +65,10 @@ async function attachHomePage(){
 
     rowsConatainer.addEventListener("click",(e)=>{
        
-        let data=e.target;
+        let data=e.target.parentNode;
 
-        console.log(data);
-        //console.log("data"+data.id);
-    if (data.classList.contains("id")){
-
-
-
-        
             let tvProperties=data.children;
 
-          
             
             const tv={
                 tvId:tvProperties[0].innerHTML,
@@ -84,14 +76,12 @@ async function attachHomePage(){
                 model:tvProperties[2].innerHTML,
                 pret:tvProperties[3].innerHTML
     
-            }
-            console.log(tv);            
+            };
+                     
             attachUpdatePage(tv);
-        }
-       
         
        
-    })
+    });
 
    
 
@@ -178,6 +168,7 @@ async function attachUpdatePage(tv){
         }
 
         if(inp3.value==0){
+
             erors.push("trebuie pusa pretul");
 
             inp3.style.borderColor="red";
@@ -282,16 +273,24 @@ function attachNewTvPage(){
             marca:inp1.value,
             model:inp2.value,
             pret:inp3.value,
-        }
+        };
         
 
         let erors=[];
-        if(inp1.value=="" && inp2=="" && inp3==0){
+
+        if(inp1.value=="" &&
+        
+            inp2.value==""&&
+
+            inp3.value==0
+        )
+     
             erors.push("Nu ati completat campurile");
-        }
+        
 
         if(inp1.value==""){
             erors.push("Trebuie pusa marca");
+
             inp1.style.borderColor="red";
         }
 
@@ -332,6 +331,7 @@ function attachNewTvPage(){
             attachHomePage();
         }
 
+        
         
     })
 
